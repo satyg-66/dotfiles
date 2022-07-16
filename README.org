@@ -14,5 +14,5 @@ This is my customized dotfiles I'm working with. Please note that this is an ear
 - Awesome Window Manager /(Soon to come)/
 
 * MY OTHER CONFIGS
-- [Doom Emacs](https://github.com/satyg-66/dotfiles/tree/main/doom.d)
-- [Alacritty](https://github.com/satyg-66/dotfiles/tree/main/alacritty)
+- Doom Emacs - https://github.com/satyg-66/dotfiles/tree/main/doom.d
+- Alacritty - https://github.com/satyg-66/dotfiles/tree/main/alacritty
