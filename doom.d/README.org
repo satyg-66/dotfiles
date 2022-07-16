@@ -1,0 +1,203 @@
+#+TITLE: Doom-Emacs config.el
+#+PROPERTY: header-args :tangle config.el
+#+DESCRIPTION: Main configuration for Doom-Emacs
+#+auto_tangle: t
+#+AUTHOR: Jonas Ingemarsson
+#+STARTUP: showeverything
+
+* TABLE OF CONTENTS :toc:
+- [[#about][ABOUT]]
+- [[#config][CONFIG]]
+  - [[#fonts][FONTS]]
+  - [[#themes][THEMES]]
+  - [[#line-numbers][LINE NUMBERS]]
+  - [[#org-location][ORG LOCATION]]
+  - [[#packages][PACKAGES]]
+
+* ABOUT
+This is my personal Emacs config mayed by me and for me. If anyone wants to use it, feel free to do so. However, I will not provide and support and I will not be responsible for anything caused by the config itself.
+
+#+begin_src elisp
+;;
+;;
+;;                        ,d
+;;                        88
+;; ,adPPYba, ,adPPYYba, MM88MMM 8b       d8  ,adPPYb,d8
+;; I8[    "" ""     `Y8   88    `8b     d8' a8"    `Y88
+;;  `"Y8ba,  ,adPPPPP88   88     `8b   d8'  8b       88
+;; aa    ]8I 88,    ,88   88,     `8b,d8'   "8a,   ,d88
+;; `"YbbdP"' `"8bbdP"Y8   "Y888     Y88'     `"YbbdP"Y8
+;;                                  d8'      aa,    ,88
+;;                                 d8'        "Y8bbdP"
+
+
+;; AUTHOR: Jonas Ingemarsson
+;; DESC: Main configuration for Doom-Emacs
+;; WARNING: This config file will overrite other config files, use with caution!
+;; DEPENDENCIES: none
+
+
+#+end_src
+
+* CONFIG
+#+begin_src elisp
+;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
+#+end_src
+
+
+Place your private configuration here! Remember, you do not need to run 'doom sync' after modifying this file!
+
+Some functionality uses this to identify you, e.g. GPG configuration, email clients, file templates and snippets. It is optional.
+
+#+begin_src elisp
+        ;; PERSONAL INFORMATION
+(setq user-full-name "Jonas Ingemarsson"
+      user-mail-address "ingemarsson.jonas@me.com")
+#+end_src
+
+
+** FONTS
+Doom exposes five (optional) variables for controlling fonts in Doom:
+
+ - 'doom-font' -- the primary font to use
+ - 'doom-variable-pitch-font' -- a non-monospace font (where applicable)
+ - 'doom-big-font' -- used for 'doom-big-font-mode'; use this for presentations or streaming.
+ - 'doom-unicode-font' -- for unicode glyphs
+ - 'doom-serif-font' -- for the 'fixed-pitch-serif' face
+
+See 'C-h v doom-font' for documentation and more examples of what they accept.
+
+If you or Emacs can't find your font, use 'M-x describe-font' to look them up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to refresh your font settings. If Emacs still can't find your font, it likely wasn't installed correctly. Font issues are rarely Doom issues!
+
+#+begin_src elisp
+        ;; FONTS
+(setq doom-font (font-spec :family "Ubuntu Mono" :size 15)              ;; Make sure to use a font that provides an italic face
+      doom-variable-pitch-font (font-spec :family "Ubuntu" :size 15)
+      doom-big-font (font-spec :family "Ubuntu Mono" :size 24))
+(after! doom-themes
+  (setq doom-themes-enable-bold t
+        doom-themes-enable-italic t))
+(custom-set-faces!
+  '(font-lock-comment-face :slant italic)
+  '(font-lock-keyword-face :slant italic))
+#+end_src
+
+
+** THEMES
+There are two ways to load a theme. Both assume the theme is installed and available. You can either set 'doom-theme' or manually load a theme with the 'load-theme' function.
+To toggle between different built in themes: 'SPC h t'
+
+#+begin_src elisp
+        ;; THEME
+(setq doom-theme 'doom-dracula)         ;; Default theme is 'doom-one
+#+end_src
+
+
+** LINE NUMBERS
+This determines the style of line numbers in effect. If set to 'nil', line numbers are disabled. For relative line numbers, set this to `relative'.
+
+#+begin_src elisp
+        ;; LINE NUMBERS
+(setq display-line-numbers-type t)
+#+end_src
+
+
+** ORG LOCATION
+If you use *org* and don't want your org files in the default location below, change 'org-directory'. It must be set before org loads!
+
+#+begin_src elisp
+        ;; DEFAULT ORG LOCATION
+(setq org-directory "~/org/")
+#+end_src
+
+
+** PACKAGES
+Whenever you reconfigure a package, make sure to wrap your config in an 'after!' block, otherwise Doom's defaults may override your settings. E.g.
+
+(after! PACKAGE
+    (setq x y))
+
+The exceptions to this rule:
+
+ - Setting file/directory variables (like `org-directory')
+ - Setting variables which explicitly tell you to set them before their package is loaded (see 'C-h v VARIABLE' to look up their documentation).
+ - Setting doom variables (which start with 'doom-' or '+').
+
+Here are some additional functions/macros that will help you configure Doom.
+
+ - 'load!' for loading external *.el files relative to this one
+ - 'use-package!' for configuring packages
+ - 'after!' for running code after a package has loaded
+ - 'add-load-path!' for adding directories to the 'load-path', relative to this file. Emacs searches the 'load-path' when you load packages with 'require' or `use-package'.
+ - 'map!' for binding new keys
+
+To get information about any of these functions/macros, move the cursor over the highlighted symbol at press 'K' (non-evil users must press 'C-c c k'). This will open documentation for it, including demos of how they are used. Alternatively, use `C-h o' to look up a symbol (functions, variables, faces, etc).
+
+You can also try 'gd' (or 'C-c c d') to jump to their definition and see how they are implemented.
+
+*** ORG-AUTO-TANGLE
+Automaticly tangle all snippets within a org document. *#+PROPERTY: header-args :tangle <filename>* and also *#+AUTO_TANGLE t* must be present.
+
+#+begin_src elisp
+        ;; ORG-AUTO-TANGLE
+(use-package! org-auto-tangle
+  :defer t
+  :hook (org-mode . org-auto-tangle-mode)
+  :config
+  (setq org-auto-tangle-default t))
+#+end_src
+
+*** STARTUP WINDOW-SIZE
+Determens the size of the Emacs window when opened. Default is *maximized*, which means as big as possible without hiding any OS menu bars and such. Toggle *fullscreen* to have a complete fullscreen.
+
+#+begin_src elisp
+        ;; EMACS STARTUP WINDOW-SIZE
+;; Uncomment to start maximized
+(add-hook 'window-setup-hook 'toggle-frame-maximized t)
+
+;; Uncomment to start fullscreen
+;;(add-hook 'window-setup-hook 'toggle-frame-fullscreen t)
+#+end_src
+
+*** CURSOR LOCATION
+This will remember and restore the last curson location of opened files.
+
+#+begin_src elisp
+        ;; CURSOR LOCATION
+(save-place-mode 1)
+#+end_src
+
+*** POP-UPS
+This will hide all UI dialogs when prompting
+
+#+begin_src elisp
+        ;; UI POP-UPS
+(setq use-dialog-box nil)
+#+end_src
+
+*** REVERT BUFFERS
+Revert buffers when the underlying file has changes. Also Revert Dired and other buffers.
+
+#+begin_src elisp
+        ;; REVERT BUFFERS
+(global-auto-revert-mode 1)                     ;; revert buffers when the underlying file has changed
+(setq global-auto-revert-non-file-buffers t)    ;; Revert Dired and other buffers
+#+end_src
+
+*** EMPHASIS MARKERS
+Hiding emphasis markers such as * and / when typing bold and italics in org-mode.
+
+#+begin_src elisp
+        ;; HIDE EMPHASIS-MARKERS
+(setq org-hide-emphasis-markers t)
+#+end_src
+
+*** HL-TODO-MODE
+Enable hl-todo-mode globaly. Hence, this might disable magit-diff highlighting
+
+#+begin_src elisp
+        ;; ENABLE HL-TODO-MODE GLOBALY
+(define-globalized-minor-mode my-global-hl-todo-mode hl-todo-mode
+(lambda () (hl-todo-mode 1)))
+(my-global-hl-todo-mode 1)
+#+end_src
