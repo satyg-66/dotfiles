@@ -1,0 +1,122 @@
+#+TITLE: Alacritty config
+#+PROPERTY: header-args :tangle alacritty.yml
+#+DESCRIPTION: Custom color scheme for Alacritty terminal emulator
+#+auto_tangle: t
+#+AUTHOR: Jonas Ingemarsson
+#+STARTUP: showeverything
+
+* TABLE OF CONTENTS :toc:
+- [[#config][CONFIG]]
+  - [[#window-configuration][WINDOW CONFIGURATION]]
+- [[#colors][COLORS]]
+  - [[#primary-colors][PRIMARY COLORS]]
+  - [[#cursor-colors][CURSOR COLORS]]
+  - [[#search-and-hints-colors][SEARCH AND HINTS COLORS]]
+  - [[#line-indication-colors][LINE INDICATION COLORS]]
+  - [[#normal-colors][NORMAL COLORS]]
+  - [[#bright-colors][BRIGHT COLORS]]
+
+* CONFIG
+Below snippets belong to the main configuration of the custom Alacritty terminal emulator color scheme
+
+** WINDOW CONFIGURATION
+This part configures the window opacity, title and decorations
+
+#+begin_src yaml
+window:
+  opacity: 0.8
+  title: Alacritty
+  decorations:
+    None
+#+end_src
+
+* COLORS
+This section is handeling all colors used in the custom Alacritty terminal emulator color scheme
+
+** PRIMARY COLORS
+These are the primary colors used in the custom Alacritty terminal emulator color scheme
+
+#+begin_src yaml
+colors:
+  primary:
+    background: '#282a36'
+    foreground: '#f8f8f2'
+    bright_foreground: '#ffffff'
+#+end_src
+
+** CURSOR COLORS
+This is the section that handles cursor colors used in the custom Alacritty terminal emulator color scheme
+
+#+begin_src yaml
+  cursor:
+    text: CellBackground
+    cursor: CellForeground
+  vi_mode_cursor:
+    text: CellBackground
+    cursor: CellForeground
+#+end_src
+
+** SEARCH AND HINTS COLORS
+This is the section that handles the colors for search and hints in the custom Alacritty terminal emulator color scheme
+
+#+begin_src yaml
+  search:
+    matches:
+      foreground: '#44475a'
+      background: '#50fa7b'
+    focused_match:
+      foreground: '#44475a'
+      background: '#ffb86c'
+    bar:
+      background: '#282a36'
+      foreground: '#f8f8f2'
+  hints:
+    start:
+      foreground: '#282a36'
+      background: '#f1fa8c'
+    end:
+      foreground: '#f1fa8c'
+      background: '#282a36'
+#+end_src
+
+** LINE INDICATION COLORS
+Colors for line indications
+
+#+begin_src yaml
+  line_indicator:
+    foreground: None
+    background: None
+  selection:
+    text: CellForeground
+    background: '#44475a'
+#+end_src
+
+** NORMAL COLORS
+These are the normal colors used in the custom Alacritty terminal emulator color scheme
+
+#+begin_src yaml
+  normal:
+    black: '#21222c'
+    red: '#ff5555'
+    green: '#50fa7b'
+    yellow: '#f1fa8c'
+    blue: '#bd93f9'
+    magenta: '#ff79c6'
+    cyan: '#8be9fd'
+    white: '#f8f8f2'
+#+end_src
+
+** BRIGHT COLORS
+These are the bright colors used in the custom Alacritty terminal emulator color scheme
+
+#+begin_src yaml
+  bright:
+    black: '#6272a4'
+    red: '#ff6e6e'
+    green: '#69ff94'
+    yellow: '#ffffa5'
+    blue: '#d6acff'
+    magenta: '#ff92df'
+    cyan: '#a4ffff'
+    white: '#ffffff'
+#+end_src
