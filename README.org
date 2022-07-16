@@ -1,0 +1,18 @@
+#+TITLE: My Dotfiles
+#+AUTHOR: Jonas Ingemarsson
+#+DESCRIPTION: This is a README for all of my dotfiles
+
+* TABLE OF CONTETNS :toc:
+- [[#about][ABOUT]]
+- [[#my-window-manager-configs][MY WINDOW MANAGER CONFIGS]]
+- [[#my-other-configs][MY OTHER CONFIGS]]
+
+* ABOUT
+This is my customized dotfiles I'm working with. Please note that this is an early project and more content will be uploaded. This is a work in process.
+
+* MY WINDOW MANAGER CONFIGS
+- Awesome Window Manager /(Soon to come)/
+
+* MY OTHER CONFIGS
+- Doom Emacs
+- Alacritty
