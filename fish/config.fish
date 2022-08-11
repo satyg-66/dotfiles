@@ -49,3 +49,11 @@ alias rm='rm -i'
 
 #colorscript random
 starship init fish | source
+
+### REMOVE OR COMMENT BELOW LINES IF USING A LOGIN MANAGER ###
+# Start X at login
+if status is-login
+   if test -z "$DISPLAY" -a "$XDG_VTNR" = 1
+      exec startx -- -keeptty
+   end
+end
