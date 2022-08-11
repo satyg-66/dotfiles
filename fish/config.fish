@@ -47,5 +47,5 @@ alias cp="cp -i"
 alias mv='mv -i'
 alias rm='rm -i'
 
-colorscript random
+#colorscript random
 starship init fish | source
