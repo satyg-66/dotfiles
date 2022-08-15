@@ -23,7 +23,7 @@
 
         ;; FONTS
 (setq doom-font (font-spec :family "JetBrainsMono" :size 13)                                   ;; Make sure to use a font that provides an italic face
-      doom-variable-pitch-font (font-spec :family "DejaVu Sans" :size 15)
+      doom-variable-pitch-font (font-spec :family "Ubuntu" :size 15)
       doom-big-font (font-spec :family "JetBrainsMono" :size 24))                              ;; Enable with SPC t b
 (after! doom-themes
   (setq doom-themes-enable-bold t
