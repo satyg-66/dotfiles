@@ -19,7 +19,7 @@ def autostart():
     # oceanicNext
     # tomorrowNight
     # macchiato
-color = theme.tomorrowNight()
+color = theme.dracula()
 
 # My variables
 mod = "mod4"
